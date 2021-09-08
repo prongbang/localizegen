@@ -6,7 +6,13 @@
  / / _ \/ __/ _ `/ / /_ // -_) _ `/ -_) _ \
 /_/\___/\__/\_,_/_/_//__/\__/\_, /\__/_//_/
                             /___/          
-
+--> START
+# Platform: ios
+# Language: en
+# Generate: localization
+> Create ./App/Locallization/Translate.swift -> Success
+> Create ./App/Locallization/en.lproj/Localizable.strings -> Success
+<-- DONE
 ```
 
 Generate Localization tools for Mobile Application
