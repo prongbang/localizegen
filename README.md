@@ -43,7 +43,7 @@ $ localizegen -platform ios -target ./ProjectName/Locallization -document 1r91EC
 
 - 1. Create a Google Sheet
 
-[!Localize](/docs/sheet-localize.png)
+![Localize](/docs/sheet-localize.png)
 
 - 2. Extract from the link the `DocumentId` and `SheetId` values
 
