@@ -11,6 +11,14 @@
 
 Generate Localization tools for Mobile Application
 
+## Download
+
+### Binary
+
+- [macOS](https://github.com/prongbang/localizegen/blob/master/binary/macos/localizegen?raw=true)
+- [Linux](https://github.com/prongbang/localizegen/blob/master/binary/linux/localizegen?raw=true)
+- [Mindows](https://github.com/prongbang/localizegen/blob/master/binary/windows/localizegen.exe?raw=true)
+
 ## Flag
 
 - `-platform`   : `android` or `ios`        *require
