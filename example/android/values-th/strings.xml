@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">localizgen</string>
+	<string name="common_ok">ตกลง</string>
+	<string name="common_no">ไม่</string>
+	<string name="common_yes">ใช่</string>
+	<string name="common_cancel">ยกเลิก</string>
+	<string name="login_entered_password_wrong" formatted="true">คุณกรอกรหัสผ่านผิด %1$s ครั้ง เหลืออีก %2$s ครั้ง</string>
+</resources>

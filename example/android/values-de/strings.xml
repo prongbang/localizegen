@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">localizgen</string>
+	<string name="common_ok">OK</string>
+	<string name="common_no">NEIN</string>
+	<string name="common_yes">JAWOHL</string>
+	<string name="common_cancel">ABBRECHEN</string>
+	<string name="login_entered_password_wrong" formatted="true">Sie haben falsche Kennwort %1$s -ZEZE eingegeben, verbleibende %2$s -ZEZE.</string>
+</resources>

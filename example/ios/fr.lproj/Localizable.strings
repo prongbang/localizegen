@@ -1,0 +1,7 @@
+
+"app_name" = "localizgen";
+"common_ok" = "d\'accord";
+"common_no" = "NON";
+"common_yes" = "OUI";
+"common_cancel" = "ANNULER";
+"login_entered_password_wrong" = "Vous avez entré un mauvais mot de passe {1}, restant {2} fois.";

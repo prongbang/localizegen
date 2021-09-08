@@ -1,0 +1,7 @@
+
+"app_name" = "localizgen";
+"common_ok" = "好的";
+"common_no" = "不";
+"common_yes" = "是的";
+"common_cancel" = "取消";
+"login_entered_password_wrong" = "您输入了错误的密码{1}时间，剩下{2}时间。";

@@ -1,0 +1,7 @@
+
+"app_name" = "localizgen";
+"common_ok" = "OK";
+"common_no" = "NO";
+"common_yes" = "SÍ";
+"common_cancel" = "CANCELAR";
+"login_entered_password_wrong" = "Ingresó la contraseña incorrecta {1} veces, restantes {2} veces.";

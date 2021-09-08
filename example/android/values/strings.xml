@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">localizgen</string>
+	<string name="common_ok">OK</string>
+	<string name="common_no">NO</string>
+	<string name="common_yes">YES</string>
+	<string name="common_cancel">CANCEL</string>
+	<string name="login_entered_password_wrong" formatted="true">You entered wrong password %1$s times, remaining %2$s times.</string>
+</resources>

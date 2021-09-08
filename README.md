@@ -1,0 +1,61 @@
+# localizegen
+
+Generate Localization tools for Mobile Application
+
+## Flag
+
+- `-platform`   : `android` or `ios`        *require
+- `-target`     : Target path
+- `-locale`     : `en`, `th`, etc
+- `-document`   : Google sheet document id  *require
+- `-sheet`      : Google sheet id           *require
+- `-filename`   : Custom file name
+
+## Android
+
+- Generate by language
+
+```shell script
+$ localizegen -platform android -target ./app/src/main/res -locale en -document 1r91ECV-As0XtuqGKXU7dXnoY4og9XPBoCqwRcdio6EU -sheet 0
+```
+
+- Generate all language supported
+
+```shell script
+$ localizegen -platform android -target ./app/src/main/res -document 1r91ECV-As0XtuqGKXU7dXnoY4og9XPBoCqwRcdio6EU -sheet 0
+```
+
+## iOS
+
+- Generate by language
+
+```shell script
+$ localizegen -platform ios -target ./ProjectName/Locallization -locale en -document 1r91ECV-As0XtuqGKXU7dXnoY4og9XPBoCqwRcdio6EU -sheet 0
+```
+
+- Generate all language supported
+
+```shell script
+$ localizegen -platform ios -target ./ProjectName/Locallization -document 1r91ECV-As0XtuqGKXU7dXnoY4og9XPBoCqwRcdio6EU -sheet 0
+```
+
+## Setup
+
+- 1. Create a Google Sheet
+
+[!png](docs/sheet-localize.png)
+
+- 2. Extract from the link the `DocumentId` and `SheetId` values
+
+```shell script
+https://docs.google.com/spreadsheets/d/<DocumentId>/edit#gid=<SheetId>
+```
+
+Example
+
+```shell script
+https://docs.google.com/spreadsheets/d/1r91ECV-As0XtuqGKXU7dXnoY4og9XPBoCqwRcdio6EU/edit#gid=0
+
+DocumentId  = 1r91ECV-As0XtuqGKXU7dXnoY4og9XPBoCqwRcdio6EU
+SheetId     = 0
+```
