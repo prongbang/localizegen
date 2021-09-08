@@ -15,7 +15,7 @@
 <-- DONE
 ```
 
-Generate Localization tools for Mobile Application
+Generate Localization tools for Mobile Application an Android, iOS
 
 ## Download
 
