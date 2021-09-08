@@ -1,5 +1,14 @@
 # localizegen
 
+```shell
+   __              ___                     
+  / /__  _______ _/ (_)__ ___ ___ ____ ___ 
+ / / _ \/ __/ _ `/ / /_ // -_) _ `/ -_) _ \
+/_/\___/\__/\_,_/_/_//__/\__/\_, /\__/_//_/
+                            /___/          
+
+```
+
 Generate Localization tools for Mobile Application
 
 ## Flag
