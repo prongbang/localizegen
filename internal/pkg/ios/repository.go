@@ -51,7 +51,7 @@ func (r *repository) GenerateStringsResources(csv csvx.CsvList, localeIndex int)
 }
 
 func (r *repository) GenerateSwiftResources(csv csvx.CsvList, localeIndex int) string {
-	content := "import Foundation\n\npublic enum TranslateType: String {"
+	content := "import Foundation\n\npublic enum LocalizablesType: String {"
 	for i := 1; i < len(csv); i++ {
 		row := csv[i]
 
