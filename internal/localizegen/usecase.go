@@ -80,6 +80,14 @@ func (u *usecase) GetAvailableLanguages(csv csvx.CsvList) core.Languages {
 		if err == nil {
 			matchName := name.FindString(csv[0][i])
 			matchKey := key.FindString(csv[0][i])
+
+			// Match: xx
+			if matchKey == "" || matchName == "" {
+				matchName = csv[0][i]
+				matchKey = csv[0][i]
+			}
+
+			// Match: Name (xx)
 			if matchKey != "" {
 				matchName = strings.ReplaceAll(matchName, " (", "")
 				matchKey = strings.ReplaceAll(matchKey, "(", "")
