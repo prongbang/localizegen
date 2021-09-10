@@ -27,12 +27,12 @@ Generate Localization tools for Mobile Application an Android, iOS
 
 ## Flag
 
-- `-platform`   : `android` or `ios`        *require
-- `-target`     : Target path
-- `-locale`     : `en`, `th`, etc
-- `-document`   : Google sheet document id  *require
-- `-sheet`      : Google sheet id           *require
-- `-filename`   : Custom file name
+- `-platform` : `android` or `ios`        *require
+- `-target`     :  Target path
+- `-locale`     : `en`, `th`, etc
+- `-document` :  Google sheet document id  *require
+- `-sheet`       :  Google sheet id           *require
+- `-filename` :  Custom file name
 
 ## Android
 
