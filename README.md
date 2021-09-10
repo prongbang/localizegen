@@ -48,6 +48,32 @@ $ localizegen -platform android -target ./app/src/main/res -locale en -document 
 $ localizegen -platform android -target ./app/src/main/res -document 1r91ECV-As0XtuqGKXU7dXnoY4og9XPBoCqwRcdio6EU -sheet 0
 ```
 
+Output
+
+```shell
+android
+ ├── values
+ │   └── strings.xml
+ ├── values-de
+ │   └── strings.xml
+ ├── values-es
+ │   └── strings.xml
+ ├── values-fr
+ │   └── strings.xml
+ ├── values-hi
+ │   └── strings.xml
+ ├── values-ja
+ │   └── strings.xml
+ ├── values-pt
+ │   └── strings.xml
+ ├── values-ru
+ │   └── strings.xml
+ ├── values-th
+ │   └── strings.xml
+ └── values-zh
+     └── strings.xml
+```
+
 ## iOS
 
 - Generate by language
@@ -60,6 +86,33 @@ $ localizegen -platform ios -target ./ProjectName/Locallization -locale en -docu
 
 ```shell script
 $ localizegen -platform ios -target ./ProjectName/Locallization -document 1r91ECV-As0XtuqGKXU7dXnoY4og9XPBoCqwRcdio6EU -sheet 0
+```
+
+Output
+
+```shell
+ios
+ ├── Translate.swift
+ ├── de.lproj
+ │   └── Localizable.strings
+ ├── en.lproj
+ │   └── Localizable.strings
+ ├── es.lproj
+ │   └── Localizable.strings
+ ├── fr.lproj
+ │   └── Localizable.strings
+ ├── hi.lproj
+ │   └── Localizable.strings
+ ├── ja.lproj
+ │   └── Localizable.strings
+ ├── pt.lproj
+ │   └── Localizable.strings
+ ├── ru.lproj
+ │   └── Localizable.strings
+ ├── th.lproj
+ │   └── Localizable.strings
+ └── zh.lproj
+     └── Localizable.strings
 ```
 
 ## Setup
@@ -78,7 +131,7 @@ Example
 
 ```shell script
 https://docs.google.com/spreadsheets/d/1r91ECV-As0XtuqGKXU7dXnoY4og9XPBoCqwRcdio6EU/edit#gid=0
-
-DocumentId  = 1r91ECV-As0XtuqGKXU7dXnoY4og9XPBoCqwRcdio6EU
-SheetId     = 0
 ```
+
+- `DocumentId`  = `1r91ECV-As0XtuqGKXU7dXnoY4og9XPBoCqwRcdio6EU`
+- `SheetId`        = `0`
