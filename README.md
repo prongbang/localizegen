@@ -6,10 +6,24 @@
  / / _ \/ __/ _ `/ / /_ // -_) _ `/ -_) _ \
 /_/\___/\__/\_,_/_/_//__/\__/\_, /\__/_//_/
                             /___/          
-
+--> START
+# Platform: ios
+# Language: en
+# Generate: localization
+> Create ./App/Locallization/Translate.swift -> Success
+> Create ./App/Locallization/en.lproj/Localizable.strings -> Success
+<-- DONE
 ```
 
-Generate Localization tools for Mobile Application
+Generate Localization tools for Mobile Application an Android, iOS
+
+## Download
+
+### Binary
+
+- [macOS](https://github.com/prongbang/localizegen/blob/master/binary/macos/localizegen?raw=true)
+- [Linux](https://github.com/prongbang/localizegen/blob/master/binary/linux/localizegen?raw=true)
+- [Mindows](https://github.com/prongbang/localizegen/blob/master/binary/windows/localizegen.exe?raw=true)
 
 ## Flag
 
