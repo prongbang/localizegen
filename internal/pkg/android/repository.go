@@ -2,6 +2,7 @@ package android
 
 import (
 	"github.com/prongbang/filex"
+	"github.com/prongbang/localizegen/pkg/common"
 	"github.com/prongbang/localizegen/pkg/core"
 	"github.com/prongbang/localizegen/pkg/csvx"
 	"regexp"
@@ -37,8 +38,12 @@ func (r *repository) GenerateXmlResourceFile(csv csvx.CsvList, locale string, ta
 func (r *repository) GenerateXmlResources(csv csvx.CsvList, localeIndex int) string {
 	content := "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 	content += "<resources>"
+	keys := csv[0]
 	for i := 1; i < len(csv); i++ {
 		row := csv[i]
+		if common.ColNotEmpty(row) < len(keys) {
+			continue
+		}
 		formatted := ""
 		if strings.Index(row[1], "%s") > -1 || strings.Index(row[1], "%d") > -1 {
 			formatted = " formatted=\"false\""
