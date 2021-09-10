@@ -18,7 +18,7 @@ func (u *useCase) Generate(csv csvx.CsvList, locale string, target string, filen
 	if filename == "" {
 		filenameString = "Localizable.strings"
 	}
-	filenameSwift := "Translate.swift"
+	filenameSwift := "Localizables.swift"
 	if locale != "" {
 		localeIndex := languages[locale].Index
 		if localeIndex > 0 {
