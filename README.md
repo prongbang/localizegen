@@ -28,7 +28,7 @@ $ brew install localizegen
 
 ### Binary
 
-- [macOS](https://github.com/prongbang/localizegen/localizegen?raw=true)
+- [macOS](https://github.com/prongbang/localizegen/blob/master/localizegen?raw=true)
 - [Linux](https://github.com/prongbang/localizegen/blob/master/binary/linux/localizegen?raw=true)
 - [Mindows](https://github.com/prongbang/localizegen/blob/master/binary/windows/localizegen.exe?raw=true)
 
