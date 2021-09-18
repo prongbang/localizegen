@@ -6,4 +6,5 @@
 	<string name="common_yes">SÍ</string>
 	<string name="common_cancel">CANCELAR</string>
 	<string name="login_entered_password_wrong" formatted="true">Ingresó la contraseña incorrecta %1$s veces, restantes %2$s veces.</string>
+	<string name="status_code" formatted="false">Status Code: %s</string>
 </resources>

@@ -6,4 +6,5 @@
 	<string name="common_yes">JAWOHL</string>
 	<string name="common_cancel">ABBRECHEN</string>
 	<string name="login_entered_password_wrong" formatted="true">Sie haben falsche Kennwort %1$s -ZEZE eingegeben, verbleibende %2$s -ZEZE.</string>
+	<string name="status_code" formatted="false">Status Code: %s</string>
 </resources>

@@ -6,4 +6,5 @@
 	<string name="common_yes">OUI</string>
 	<string name="common_cancel">ANNULER</string>
 	<string name="login_entered_password_wrong" formatted="true">Vous avez entré un mauvais mot de passe %1$s, restant %2$s fois.</string>
+	<string name="status_code" formatted="false">Status Code: %s</string>
 </resources>

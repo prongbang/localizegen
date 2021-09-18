@@ -6,4 +6,5 @@
 	<string name="common_yes">ใช่</string>
 	<string name="common_cancel">ยกเลิก</string>
 	<string name="login_entered_password_wrong" formatted="true">คุณกรอกรหัสผ่านผิด %1$s ครั้ง เหลืออีก %2$s ครั้ง</string>
+	<string name="status_code" formatted="false">Status Code: %s</string>
 </resources>
