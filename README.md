@@ -22,6 +22,7 @@ Generate Localization tools for Mobile Application an Android, iOS
 ### Homebrew
 
 ```shell
+$ brew update
 $ brew tap prongbang/homebrew-formulae
 $ brew install localizegen
 ```
@@ -105,7 +106,7 @@ Output
 
 ```shell
 ios
- ├── Translate.swift
+ ├── Localizables.swift
  ├── de.lproj
  │   └── Localizable.strings
  ├── en.lproj
