@@ -66,8 +66,8 @@ func (r *repository) GenerateXmlResources(csv csvx.CsvList, localeIndex int) str
 
 		// Prepare data
 		escapedContent := row[localeIndex]
-		escapedContent = escapedDoubleQuote.ReplaceAllString(escapedContent, "\\\"")
-		escapedContent = escapedSingleQuote.ReplaceAllString(escapedContent, "\\'")
+		escapedContent = escapedDoubleQuote.ReplaceAllString(escapedContent, `"`)
+		escapedContent = escapedSingleQuote.ReplaceAllString(escapedContent, `'`)
 		escapedContent = escapedAmp.ReplaceAllString(escapedContent, "&amp;")
 		escapedContent = escapedDots.ReplaceAllString(escapedContent, "&#8230;")
 		escapedContent = escapedPercent.ReplaceAllString(escapedContent, "%")
