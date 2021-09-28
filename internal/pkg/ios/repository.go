@@ -39,7 +39,7 @@ func (r *repository) GenerateStringsResources(csv csvx.CsvList, localeIndex int)
 		escapedContent := row[localeIndex]
 		escapedContent = escapedStringBinding.ReplaceAllString(escapedContent, "%@")
 		escapedContent = escapedDoubleQuote.ReplaceAllString(escapedContent, `"`)
-		escapedContent = escapedSingleQuote.ReplaceAllString(escapedContent, `'`)
+		escapedContent = escapedSingleQuote.ReplaceAllString(escapedContent, "\\'")
 		escapedContent = escapedNewLine.ReplaceAllString(escapedContent, "\\n")
 
 		// Create key
