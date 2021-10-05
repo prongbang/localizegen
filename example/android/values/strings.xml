@@ -5,6 +5,7 @@
 	<string name="common_no">NO</string>
 	<string name="common_yes">YES</string>
 	<string name="common_cancel">CANCEL</string>
-	<string name="login_entered_password_wrong" formatted="true">You entered wrong password %1$s times, remaining %2$s times.</string>
-	<string name="status_code" formatted="false">Status Code: %s</string>
+	<string name="common_login_entered_password_wrong" formatted="true">You entered wrong password %1$s times, remaining %2$s times.</string>
+	<string name="common_status_code" formatted="false">Status Code: %s</string>
+	<string name="common_error_code">Error Code: %s</string>
 </resources>

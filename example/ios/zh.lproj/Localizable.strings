@@ -4,4 +4,6 @@
 "common_no" = "不";
 "common_yes" = "是的";
 "common_cancel" = "取消";
-"login_entered_password_wrong" = "您输入了错误的密码{1}时间，剩下{2}时间。";
+"common_login_entered_password_wrong" = "您输入了错误的密码{1}时间，剩下{2}时间。";
+"common_status_code" = "Status Code: %@";
+"common_error_code" = "Error Code: %@";

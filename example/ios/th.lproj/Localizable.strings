@@ -4,4 +4,6 @@
 "common_no" = "ไม่";
 "common_yes" = "ใช่";
 "common_cancel" = "ยกเลิก";
-"login_entered_password_wrong" = "คุณกรอกรหัสผ่านผิด {1} ครั้ง เหลืออีก {2} ครั้ง";
+"common_login_entered_password_wrong" = "คุณกรอกรหัสผ่านผิด {1} ครั้ง เหลืออีก {2} ครั้ง";
+"common_status_code" = "Status Code: %@";
+"common_error_code" = "Error Code: %@";

@@ -4,4 +4,6 @@
 "common_no" = "नहीं";
 "common_yes" = "हां";
 "common_cancel" = "रद्द करना";
-"login_entered_password_wrong" = "आपने गलत पासवर्ड {1} बार, शेष {2} बार दर्ज किया।";
+"common_login_entered_password_wrong" = "आपने गलत पासवर्ड {1} बार, शेष {2} बार दर्ज किया।";
+"common_status_code" = "Status Code: %@";
+"common_error_code" = "Error Code: %@";

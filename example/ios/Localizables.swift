@@ -6,6 +6,7 @@ public enum LocalizablesType: String {
 	case common_no
 	case common_yes
 	case common_cancel
-	case login_entered_password_wrong
-	case status_code
+	case common_login_entered_password_wrong
+	case common_status_code
+	case common_error_code
 }

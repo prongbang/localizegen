@@ -4,5 +4,6 @@
 "common_no" = "NO";
 "common_yes" = "YES";
 "common_cancel" = "CANCEL";
-"login_entered_password_wrong" = "You entered wrong password {1} times, remaining {2} times.";
-"status_code" = "Status Code: %@";
+"common_login_entered_password_wrong" = "You entered wrong password {1} times, remaining {2} times.";
+"common_status_code" = "Status Code: %@";
+"common_error_code" = "Error Code: %@";

@@ -5,6 +5,7 @@
 	<string name="common_no">नहीं</string>
 	<string name="common_yes">हां</string>
 	<string name="common_cancel">रद्द करना</string>
-	<string name="login_entered_password_wrong" formatted="true">आपने गलत पासवर्ड %1$s बार, शेष %2$s बार दर्ज किया।</string>
-	<string name="status_code" formatted="false">Status Code: %s</string>
+	<string name="common_login_entered_password_wrong" formatted="true">आपने गलत पासवर्ड %1$s बार, शेष %2$s बार दर्ज किया।</string>
+	<string name="common_status_code" formatted="false">Status Code: %s</string>
+	<string name="common_error_code">Error Code: %s</string>
 </resources>
