@@ -55,6 +55,7 @@ func (r *repository) GenerateXmlResources(csv csvx.CsvList, localeIndex int) str
 
 		// Pattern
 		escapedKey, _ := regexp.Compile("\\s{1,}")
+		escapedStringBinding, _ := regexp.Compile("%@")
 		escapedDoubleQuote, _ := regexp.Compile("[\"]")
 		escapedSingleQuote, _ := regexp.Compile("[']")
 		escapedDots, _ := regexp.Compile("\\.\\.\\.")
@@ -71,6 +72,7 @@ func (r *repository) GenerateXmlResources(csv csvx.CsvList, localeIndex int) str
 		escapedContent = escapedAmp.ReplaceAllString(escapedContent, "&amp;")
 		escapedContent = escapedDots.ReplaceAllString(escapedContent, "&#8230;")
 		escapedContent = escapedPercent.ReplaceAllString(escapedContent, "%")
+		escapedContent = escapedStringBinding.ReplaceAllString(escapedContent, "%s")
 		escapedContent = escapedLessThan.ReplaceAllString(escapedContent, "&lt;")
 		escapedContent = escapedMoreThan.ReplaceAllString(escapedContent, "&gt;")
 		escapedContent = escapedStringAutoBinding.ReplaceAllString(escapedContent, "%${1}$$s")
