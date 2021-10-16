@@ -62,19 +62,28 @@ func (r *repository) GenerateXmlResources(csv csvx.CsvList, localeIndex int) str
 		escapedAmp, _ := regexp.Compile("[&]")
 		escapedPercent, _ := regexp.Compile("[%]")
 		escapedLessThan, _ := regexp.Compile("[<]")
+		escapedLessThanEquals, _ := regexp.Compile("[≤]")
 		escapedMoreThan, _ := regexp.Compile("[>]")
+		escapedMoreThanEquals, _ := regexp.Compile("[≥]")
 		escapedStringAutoBinding, _ := regexp.Compile("{([0-9])}")
 
 		// Prepare data
 		escapedContent := row[localeIndex]
 		escapedContent = escapedDoubleQuote.ReplaceAllString(escapedContent, `"`)
 		escapedContent = escapedSingleQuote.ReplaceAllString(escapedContent, "\\'")
-		escapedContent = escapedAmp.ReplaceAllString(escapedContent, "&amp;")
+		if !strings.Contains(escapedContent, "&lt;") &&
+			!strings.Contains(escapedContent, "&gt;") &&
+			!strings.Contains(escapedContent, "&le;") &&
+			!strings.Contains(escapedContent, "&ge;") {
+			escapedContent = escapedAmp.ReplaceAllString(escapedContent, "&amp;")
+		}
 		escapedContent = escapedDots.ReplaceAllString(escapedContent, "&#8230;")
 		escapedContent = escapedPercent.ReplaceAllString(escapedContent, "%")
 		escapedContent = escapedStringBinding.ReplaceAllString(escapedContent, "%s")
 		escapedContent = escapedLessThan.ReplaceAllString(escapedContent, "&lt;")
+		escapedContent = escapedLessThanEquals.ReplaceAllString(escapedContent, "&le;")
 		escapedContent = escapedMoreThan.ReplaceAllString(escapedContent, "&gt;")
+		escapedContent = escapedMoreThanEquals.ReplaceAllString(escapedContent, "&ge;")
 		escapedContent = escapedStringAutoBinding.ReplaceAllString(escapedContent, "%${1}$$s")
 
 		// Create key name
