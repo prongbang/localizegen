@@ -17,6 +17,27 @@
 
 Generate Localization tools for Mobile Application an Android, iOS
 
+## Setup
+
+- 1. Create a Google Sheet
+
+![Localize](/docs/sheet-localize.png)
+
+- 2. Extract from the link the `DocumentId` and `SheetId` values
+
+```shell script
+https://docs.google.com/spreadsheets/d/<DocumentId>/edit#gid=<SheetId>
+```
+
+Example
+
+```shell script
+https://docs.google.com/spreadsheets/d/1r91ECV-As0XtuqGKXU7dXnoY4og9XPBoCqwRcdio6EU/edit#gid=0
+```
+
+- `DocumentId`  = `1r91ECV-As0XtuqGKXU7dXnoY4og9XPBoCqwRcdio6EU`
+- `SheetId`        = `0`
+
 ## Download
 
 ### Homebrew
@@ -128,24 +149,3 @@ ios
  └── zh.lproj
      └── Localizable.strings
 ```
-
-## Setup
-
-- 1. Create a Google Sheet
-
-![Localize](/docs/sheet-localize.png)
-
-- 2. Extract from the link the `DocumentId` and `SheetId` values
-
-```shell script
-https://docs.google.com/spreadsheets/d/<DocumentId>/edit#gid=<SheetId>
-```
-
-Example
-
-```shell script
-https://docs.google.com/spreadsheets/d/1r91ECV-As0XtuqGKXU7dXnoY4og9XPBoCqwRcdio6EU/edit#gid=0
-```
-
-- `DocumentId`  = `1r91ECV-As0XtuqGKXU7dXnoY4og9XPBoCqwRcdio6EU`
-- `SheetId`        = `0`
