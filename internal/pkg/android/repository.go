@@ -45,7 +45,7 @@ func (r *repository) GenerateXmlResources(csv csvx.CsvList, localeIndex int) str
 			continue
 		}
 		formatted := ""
-		if strings.Index(row[1], "%s") > -1 || strings.Index(row[1], "%d") > -1 {
+		if strings.Index(row[1], "%s") > -1 || strings.Index(row[1], "%d") > -1 || strings.Index(row[1], "%@") > -1 {
 			formatted = " formatted=\"false\""
 		}
 		match, _ := regexp.MatchString("{([0-9])}", row[1])
