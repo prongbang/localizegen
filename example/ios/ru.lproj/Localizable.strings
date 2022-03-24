@@ -3,7 +3,7 @@
 "common_ok" = "Ok";
 "common_no" = "НЕТ";
 "common_yes" = "ДА";
-"common_cancel" = "ОТМЕНА";
-"common_login_entered_password_wrong" = "Вы ввели неправильный пароль {1} раз, оставаясь {2} раз.";
+"common_cancel" = "ОТМЕНИТЬ";
+"common_login_entered_password_wrong" = "Вы ввели неправильный пароль %@ раз, оставаясь %@ раз.";
 "common_status_code" = "Status Code: %@";
 "common_error_code" = "Error Code: %@";

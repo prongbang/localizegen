@@ -7,5 +7,5 @@
 	<string name="common_cancel">取消</string>
 	<string name="common_login_entered_password_wrong" formatted="true">您输入了错误的密码%1$s时间，剩下%2$s时间。</string>
 	<string name="common_status_code" formatted="false">Status Code: %s</string>
-	<string name="common_error_code">Error Code: %s</string>
+	<string name="common_error_code" formatted="false">Error Code: %s</string>
 </resources>

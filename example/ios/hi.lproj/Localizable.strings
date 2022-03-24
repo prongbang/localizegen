@@ -1,9 +1,9 @@
 
 "app_name" = "localizgen";
-"common_ok" = "ठीक है";
-"common_no" = "नहीं";
+"common_ok" = "ठीक";
+"common_no" = "ना";
 "common_yes" = "हां";
 "common_cancel" = "रद्द करना";
-"common_login_entered_password_wrong" = "आपने गलत पासवर्ड {1} बार, शेष {2} बार दर्ज किया।";
+"common_login_entered_password_wrong" = "आपने गलत पासवर्ड %@ बार, शेष %@ बार दर्ज किया।";
 "common_status_code" = "Status Code: %@";
 "common_error_code" = "Error Code: %@";
