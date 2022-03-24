@@ -149,3 +149,25 @@ ios
  └── zh.lproj
      └── Localizable.strings
 ```
+
+## Flutter
+
+- Generate by language
+
+```shell script
+$ localizegen -platform flutter -target ./ProjectName/Locallization -locale en -document 1r91ECV-As0XtuqGKXU7dXnoY4og9XPBoCqwRcdio6EU -sheet 0
+```
+
+- Generate all language supported
+
+```shell script
+$ localizegen -platform flutter -target ./ProjectName/Locallization -document 1r91ECV-As0XtuqGKXU7dXnoY4og9XPBoCqwRcdio6EU -sheet 0
+```
+
+Output
+
+```shell
+flutter
+├── keys_localizations.dart
+└── sources_localizations.dart
+```
