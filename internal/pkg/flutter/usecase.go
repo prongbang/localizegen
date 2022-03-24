@@ -1,4 +1,4 @@
-package android
+package flutter
 
 import (
 	"github.com/prongbang/localizegen/pkg/core"
@@ -13,28 +13,27 @@ type useCase struct {
 }
 
 func (u *useCase) Generate(configuration core.Configuration) {
-	if configuration.Filename == "" {
-		configuration.Filename = "strings.xml"
-	}
+	filenameKeys := "keys_localizations.dart"
+	filenameSources := "sources_localizations.dart"
 	if configuration.Locale != "" {
 		localeIndex := configuration.Languages[configuration.Locale].Index
 		if localeIndex > 0 {
 			configuration.OnAdd()
 			go func() {
 				defer configuration.OnDone()
-				configuration.Result <- u.Repo.GenerateXmlResourceFile(configuration.Csv, configuration.Locale, configuration.Target, localeIndex, configuration.Filename)
+				configuration.Result <- u.Repo.GenerateSourcesFile(configuration.Csv, configuration.Languages, configuration.Target, filenameSources)
+				configuration.Result <- u.Repo.GenerateKeysFile(configuration.Csv, configuration.Target, filenameKeys)
 			}()
 		} else {
 			configuration.Result <- core.Result{Message: "Language key " + configuration.Locale + " not found.", Status: "Error"}
 		}
 	} else {
-		for k, v := range configuration.Languages {
-			configuration.OnAdd()
-			go func(localeIndex int, locale string) {
-				defer configuration.OnDone()
-				configuration.Result <- u.Repo.GenerateXmlResourceFile(configuration.Csv, locale, configuration.Target, localeIndex, configuration.Filename)
-			}(v.Index, k)
-		}
+		configuration.OnAdd()
+		go func() {
+			defer configuration.OnDone()
+			configuration.Result <- u.Repo.GenerateKeysFile(configuration.Csv, configuration.Target, filenameKeys)
+			configuration.Result <- u.Repo.GenerateSourcesFile(configuration.Csv, configuration.Languages, configuration.Target, filenameSources)
+		}()
 	}
 }
 

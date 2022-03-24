@@ -10,6 +10,9 @@ android_gen:
 ios_gen:
 	go run main.go -platform ios -target ./example/ios -document 1r91ECV-As0XtuqGKXU7dXnoY4og9XPBoCqwRcdio6EU -sheet 0
 
+flutter_gen:
+	go run main.go -platform flutter -target ./example/flutter -document 1r91ECV-As0XtuqGKXU7dXnoY4og9XPBoCqwRcdio6EU -sheet 0
+
 build_linux:
 	env GOOS=linux GOARCH=arm64 go build -ldflags "-s -w" -o ./binary/linux/localizegen github.com/prongbang/localizegen
 

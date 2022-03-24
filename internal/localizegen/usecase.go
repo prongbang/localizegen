@@ -2,9 +2,11 @@ package localizegen
 
 import (
 	"github.com/prongbang/localizegen/internal/pkg/android"
+	"github.com/prongbang/localizegen/internal/pkg/flutter"
 	"github.com/prongbang/localizegen/internal/pkg/ios"
 	"github.com/prongbang/localizegen/pkg/core"
 	"github.com/prongbang/localizegen/pkg/csvx"
+	"github.com/prongbang/localizegen/pkg/platform"
 	"net/http"
 	"regexp"
 	"strings"
@@ -21,6 +23,7 @@ type usecase struct {
 	Repo      Repository
 	AndroidUc android.UseCase
 	IosUc     ios.UseCase
+	FlutterUc flutter.UseCase
 }
 
 func (u *usecase) Process(param Localization) chan core.Result {
@@ -42,25 +45,34 @@ func (u *usecase) GenerateResource(csv csvx.CsvList, param Localization) chan co
 	} else {
 		chanLen = len(languages)
 	}
-	if param.Platform == ios.Platform {
+	if param.Platform == platform.Ios {
 		chanLen += 1
 	}
 
 	var wg sync.WaitGroup
 	state := make(chan core.Result, chanLen)
-	if param.Platform == android.Platform {
-		u.AndroidUc.Generate(csv, param.Locale, param.Target, param.Filename, languages, state, func() {
-			wg.Add(1)
-		}, func() {
-			wg.Done()
-		})
-	} else if param.Platform == ios.Platform {
-		u.IosUc.Generate(csv, param.Locale, param.Target, param.Filename, languages, state, func() {
-			wg.Add(1)
-		}, func() {
-			wg.Done()
-		})
-	} else {
+
+	config := core.Configuration{
+		Csv:       csv,
+		Locale:    param.Locale,
+		Target:    param.Target,
+		Filename:  param.Filename,
+		Languages: languages,
+		Result:    state,
+		OnAdd:     func() { wg.Add(1) },
+		OnDone:    func() { wg.Done() },
+	}
+	switch param.Platform {
+	case platform.Android:
+		u.AndroidUc.Generate(config)
+		break
+	case platform.Ios:
+		u.IosUc.Generate(config)
+		break
+	case platform.Flutter:
+		u.FlutterUc.Generate(config)
+		break
+	default:
 		state <- core.Result{Message: "Platform " + param.Platform + " not supported.", Status: "Error"}
 	}
 
@@ -103,10 +115,16 @@ func (u *usecase) GetAvailableLanguages(csv csvx.CsvList) core.Languages {
 	return languages
 }
 
-func NewUseCase(repo Repository, androidUc android.UseCase, iosUc ios.UseCase) UseCase {
+func NewUseCase(
+	repo Repository,
+	androidUc android.UseCase,
+	iosUc ios.UseCase,
+	flutterUc flutter.UseCase,
+) UseCase {
 	return &usecase{
 		Repo:      repo,
 		AndroidUc: androidUc,
 		IosUc:     iosUc,
+		FlutterUc: flutterUc,
 	}
 }

@@ -2,6 +2,7 @@ package ios
 
 import (
 	"github.com/prongbang/filex"
+	"github.com/prongbang/localizegen/pkg/common"
 	"github.com/prongbang/localizegen/pkg/core"
 	"github.com/prongbang/localizegen/pkg/csvx"
 	"regexp"
@@ -21,16 +22,18 @@ type repository struct {
 
 func (r *repository) GenerateStringsResources(csv csvx.CsvList, localeIndex int) string {
 	content := ""
+	keys := csv[0]
 	for i := 1; i < len(csv); i++ {
 		row := csv[i]
 
-		if len(row[0]) == 0 {
+		if common.ColNotEmpty(row) < len(keys) {
 			continue
 		}
 
 		// Pattern
 		escapedKey, _ := regexp.Compile("\\s{1,}")
 		escapedStringBinding, _ := regexp.Compile("%s")
+		escapedDigitBinding, _ := regexp.Compile("{\\d}")
 		escapedDoubleQuote, _ := regexp.Compile("[\"]")
 		escapedSingleQuote, _ := regexp.Compile("[']")
 		escapedNewLine, _ := regexp.Compile("(?:\\r\\n|\\r|\\n)")
@@ -38,6 +41,7 @@ func (r *repository) GenerateStringsResources(csv csvx.CsvList, localeIndex int)
 		// Prepare data
 		escapedContent := row[localeIndex]
 		escapedContent = escapedStringBinding.ReplaceAllString(escapedContent, "%@")
+		escapedContent = escapedDigitBinding.ReplaceAllString(escapedContent, "%@")
 		escapedContent = escapedDoubleQuote.ReplaceAllString(escapedContent, `"`)
 		escapedContent = escapedSingleQuote.ReplaceAllString(escapedContent, "\\'")
 		escapedContent = escapedNewLine.ReplaceAllString(escapedContent, "\\n")
@@ -52,10 +56,11 @@ func (r *repository) GenerateStringsResources(csv csvx.CsvList, localeIndex int)
 
 func (r *repository) GenerateSwiftResources(csv csvx.CsvList, localeIndex int) string {
 	content := "import Foundation\n\npublic enum LocalizablesType: String {"
+	keys := csv[0]
 	for i := 1; i < len(csv); i++ {
 		row := csv[i]
 
-		if len(row[0]) == 0 {
+		if common.ColNotEmpty(row) < len(keys) {
 			continue
 		}
 
