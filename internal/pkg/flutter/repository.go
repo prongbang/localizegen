@@ -124,7 +124,7 @@ func (r *repository) GenerateSources(csv csvx.CsvList, languages core.Languages)
 			key := escapedKey.ReplaceAllString(row[0], "_")
 			key = strings.ToLower(key)
 
-			sources[locale.Key] += "\t\t'" + key + "' = '" + escapedContent + "',\n"
+			sources[locale.Key] += "\t\t'" + key + "': '" + escapedContent + "',\n"
 
 			// last row
 			if i == len(csv)-1 {
