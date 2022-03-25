@@ -111,8 +111,8 @@ func (r *repository) GenerateSources(csv csvx.CsvList, languages core.Languages)
 		escapedNewLine, _ := regexp.Compile("(?:\\r\\n|\\r|\\n)")
 
 		// Prepare data
-		for _, key := range localeKeys {
-			locale := languages[key]
+		for _, k := range localeKeys {
+			locale := languages[k]
 			escapedContent := row[locale.Index]
 			escapedContent = escapedAdBinding.ReplaceAllString(escapedContent, "%s")
 			escapedContent = escapedDigitBinding.ReplaceAllString(escapedContent, "%s")
@@ -137,8 +137,9 @@ func (r *repository) GenerateSources(csv csvx.CsvList, languages core.Languages)
 	content += supported
 
 	// Append language
-	for _, s := range sources {
-		content += s
+	for _, k := range localeKeys {
+		locale := sources[k]
+		content += locale
 	}
 
 	content += "}"
