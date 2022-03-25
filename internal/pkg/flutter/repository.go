@@ -7,6 +7,7 @@ import (
 	"github.com/prongbang/localizegen/pkg/core"
 	"github.com/prongbang/localizegen/pkg/csvx"
 	"regexp"
+	"sort"
 	"strings"
 )
 
@@ -76,9 +77,18 @@ func (r *repository) GenerateSources(csv csvx.CsvList, languages core.Languages)
 	content += "class SourcesLocalizations {\n"
 	content += "\tMap<String, String> loadLocale(Locale locale) => _supported[locale.languageCode] ?? {};\n\n"
 
+	// Sort locale keys
+	localeKeys := make([]string, 0, len(languages))
+	for k := range languages {
+		localeKeys = append(localeKeys, k)
+	}
+	sort.Strings(localeKeys)
+
+	// Generate supported locale
 	supported := "\tMap<String, Map<String, String>> get _supported => {\n"
 	sources := map[string]string{}
-	for _, locale := range languages {
+	for _, key := range localeKeys {
+		locale := languages[key]
 		sources[locale.Key] += "\tMap<String, String> get _" + locale.Key + " => {\n"
 		supported += "\t\t\t'" + locale.Key + "'" + ": _" + locale.Key + ",\n"
 	}
@@ -101,7 +111,8 @@ func (r *repository) GenerateSources(csv csvx.CsvList, languages core.Languages)
 		escapedNewLine, _ := regexp.Compile("(?:\\r\\n|\\r|\\n)")
 
 		// Prepare data
-		for _, locale := range languages {
+		for _, key := range localeKeys {
+			locale := languages[key]
 			escapedContent := row[locale.Index]
 			escapedContent = escapedAdBinding.ReplaceAllString(escapedContent, "%s")
 			escapedContent = escapedDigitBinding.ReplaceAllString(escapedContent, "%s")
