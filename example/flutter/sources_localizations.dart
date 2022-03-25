@@ -27,6 +27,17 @@ class SourcesLocalizations {
 		'common_error_code' = 'Error Code: %s',
 	};
 
+	Map<String, String> get _en => {
+		'app_name' = 'localizgen',
+		'common_ok' = 'OK',
+		'common_no' = 'NO',
+		'common_yes' = 'YES',
+		'common_cancel' = 'CANCEL',
+		'common_login_entered_password_wrong' = 'You entered wrong password %s times, remaining %s times.',
+		'common_status_code' = 'Status Code: %s',
+		'common_error_code' = 'Error Code: %s',
+	};
+
 	Map<String, String> get _es => {
 		'app_name' = 'localizgen',
 		'common_ok' = 'OK',
@@ -45,39 +56,6 @@ class SourcesLocalizations {
 		'common_yes' = 'OUI',
 		'common_cancel' = 'ANNULER',
 		'common_login_entered_password_wrong' = 'Vous avez entré le mauvais mot de passe %s fois, restant %s fois.',
-		'common_status_code' = 'Status Code: %s',
-		'common_error_code' = 'Error Code: %s',
-	};
-
-	Map<String, String> get _pt => {
-		'app_name' = 'localizgen',
-		'common_ok' = 'OK',
-		'common_no' = 'NÃO',
-		'common_yes' = 'SIM',
-		'common_cancel' = 'CANCELAR',
-		'common_login_entered_password_wrong' = 'Você digitou senha errada %s vezes, restante %s vezes.',
-		'common_status_code' = 'Status Code: %s',
-		'common_error_code' = 'Error Code: %s',
-	};
-
-	Map<String, String> get _zh => {
-		'app_name' = 'localizgen',
-		'common_ok' = '好的',
-		'common_no' = '不',
-		'common_yes' = '是的',
-		'common_cancel' = '取消',
-		'common_login_entered_password_wrong' = '您输入了错误的密码%s时间，剩下%s时间。',
-		'common_status_code' = 'Status Code: %s',
-		'common_error_code' = 'Error Code: %s',
-	};
-
-	Map<String, String> get _en => {
-		'app_name' = 'localizgen',
-		'common_ok' = 'OK',
-		'common_no' = 'NO',
-		'common_yes' = 'YES',
-		'common_cancel' = 'CANCEL',
-		'common_login_entered_password_wrong' = 'You entered wrong password %s times, remaining %s times.',
 		'common_status_code' = 'Status Code: %s',
 		'common_error_code' = 'Error Code: %s',
 	};
@@ -104,6 +82,17 @@ class SourcesLocalizations {
 		'common_error_code' = 'Error Code: %s',
 	};
 
+	Map<String, String> get _pt => {
+		'app_name' = 'localizgen',
+		'common_ok' = 'OK',
+		'common_no' = 'NÃO',
+		'common_yes' = 'SIM',
+		'common_cancel' = 'CANCELAR',
+		'common_login_entered_password_wrong' = 'Você digitou senha errada %s vezes, restante %s vezes.',
+		'common_status_code' = 'Status Code: %s',
+		'common_error_code' = 'Error Code: %s',
+	};
+
 	Map<String, String> get _ru => {
 		'app_name' = 'localizegen',
 		'common_ok' = 'Ok',
@@ -122,6 +111,17 @@ class SourcesLocalizations {
 		'common_yes' = 'ใช่',
 		'common_cancel' = 'ยกเลิก',
 		'common_login_entered_password_wrong' = 'คุณกรอกรหัสผ่านผิด %s ครั้ง เหลืออีก %s ครั้ง',
+		'common_status_code' = 'Status Code: %s',
+		'common_error_code' = 'Error Code: %s',
+	};
+
+	Map<String, String> get _zh => {
+		'app_name' = 'localizgen',
+		'common_ok' = '好的',
+		'common_no' = '不',
+		'common_yes' = '是的',
+		'common_cancel' = '取消',
+		'common_login_entered_password_wrong' = '您输入了错误的密码%s时间，剩下%s时间。',
 		'common_status_code' = 'Status Code: %s',
 		'common_error_code' = 'Error Code: %s',
 	};
