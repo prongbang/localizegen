@@ -16,8 +16,11 @@ flutter_gen:
 build_linux:
 	env GOOS=linux GOARCH=arm64 go build -ldflags "-s -w" -o ./binary/linux/localizegen github.com/prongbang/localizegen
 
-build_macos:
-	env GOOS=darwin go build -ldflags "-w" -o ./localizegen github.com/prongbang/localizegen && chmod +x ./localizegen
+build_macos_arm64:
+	env GOOS=darwin GOARCH=arm64 go build -ldflags "-w" -o ./localizegen github.com/prongbang/localizegen && chmod +x ./localizegen
+
+build_macos_x86_64:
+	env GOOS=darwin GOARCH=amd64 go build -ldflags "-w" -o ./localizegen github.com/prongbang/localizegen && chmod +x ./localizegen
 
 build_window:
 	env GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o ./binary/windows/localizegen.exe github.com/prongbang/localizegen
