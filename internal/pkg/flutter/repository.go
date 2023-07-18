@@ -27,6 +27,12 @@ func (r *repository) GenerateKeys(csv csvx.CsvList, languages core.Languages) st
 	content := "import 'package:localization/localization.dart';\n\n"
 	content += "class KeysLocalizations extends TranslateLocalizations {"
 	localeLen := len(languages)
+
+	// Pattern
+	escapedKey, _ := regexp.Compile("\\s{1,}")
+	escapedAdBinding, _ := regexp.Compile("%@")
+	escapedDigitBinding, _ := regexp.Compile("{\\d}")
+
 	for i := 1; i < len(csv); i++ {
 		row := csv[i]
 
@@ -34,11 +40,6 @@ func (r *repository) GenerateKeys(csv csvx.CsvList, languages core.Languages) st
 		if rowLen >= 0 && rowLen <= localeLen {
 			continue
 		}
-
-		// Pattern
-		escapedKey, _ := regexp.Compile("\\s{1,}")
-		escapedAdBinding, _ := regexp.Compile("%@")
-		escapedDigitBinding, _ := regexp.Compile("{\\d}")
 
 		// Prepare key
 		key := escapedKey.ReplaceAllString(row[0], "_")
@@ -95,23 +96,18 @@ func (r *repository) GenerateSources(csv csvx.CsvList, languages core.Languages)
 		sources[locale.Key] += "\tMap<String, String> get _" + locale.Key + " => {\n"
 		supported += "\t\t\t'" + locale.Key + "'" + ": _" + locale.Key + ",\n"
 	}
-	supported += "\t\t\t};\n\n"
+	supported += "\t\t};\n\n"
+
+	// Pattern
+	escapedKey, _ := regexp.Compile("\\s{1,}")
+	escapedAdBinding, _ := regexp.Compile("%@")
+	escapedDigitBinding, _ := regexp.Compile("{\\d}")
+	escapedDoubleQuote, _ := regexp.Compile("[\"]")
+	escapedSingleQuote, _ := regexp.Compile("[']")
+	escapedNewLine, _ := regexp.Compile("(?:\\r\\n|\\r|\\n)")
 
 	for i := 1; i < len(csv); i++ {
 		row := csv[i]
-
-		rowLen := common.ColNotEmpty(row)
-		if rowLen >= 0 && rowLen <= localeLen {
-			continue
-		}
-
-		// Pattern
-		escapedKey, _ := regexp.Compile("\\s{1,}")
-		escapedAdBinding, _ := regexp.Compile("%@")
-		escapedDigitBinding, _ := regexp.Compile("{\\d}")
-		escapedDoubleQuote, _ := regexp.Compile("[\"]")
-		escapedSingleQuote, _ := regexp.Compile("[']")
-		escapedNewLine, _ := regexp.Compile("(?:\\r\\n|\\r|\\n)")
 
 		// Prepare data
 		for _, k := range localeKeys {
@@ -123,11 +119,15 @@ func (r *repository) GenerateSources(csv csvx.CsvList, languages core.Languages)
 			escapedContent = escapedSingleQuote.ReplaceAllString(escapedContent, "\\'")
 			escapedContent = escapedNewLine.ReplaceAllString(escapedContent, "\\n")
 
-			// Create key
-			key := escapedKey.ReplaceAllString(row[0], "_")
-			key = strings.ToLower(key)
+			// Check format
+			rowLen := common.ColNotEmpty(row)
+			if !(rowLen >= 0 && rowLen <= localeLen) {
+				// Create key
+				key := escapedKey.ReplaceAllString(row[0], "_")
+				key = strings.ToLower(key)
 
-			sources[locale.Key] += "\t\t'" + key + "': '" + escapedContent + "',\n"
+				sources[locale.Key] += "\t\t'" + key + "': '" + escapedContent + "',\n"
+			}
 
 			// last row
 			if i == len(csv)-1 {
