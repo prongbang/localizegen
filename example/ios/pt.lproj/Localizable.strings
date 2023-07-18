@@ -4,6 +4,6 @@
 "common_no" = "NÃO";
 "common_yes" = "SIM";
 "common_cancel" = "CANCELAR";
-"common_login_entered_password_wrong" = "Você digitou senha errada %@ vezes, restante %@ vezes.";
+"common_login_entered_password_wrong" = "Você inseriu a senha errada %@ vezes, permanecendo %@ vezes.";
 "common_status_code" = "Status Code: %@";
 "common_error_code" = "Error Code: %@";

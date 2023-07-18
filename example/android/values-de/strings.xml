@@ -3,9 +3,9 @@
 	<string name="app_name">localizgen</string>
 	<string name="common_ok">OK</string>
 	<string name="common_no">NEIN</string>
-	<string name="common_yes">JAWOHL</string>
-	<string name="common_cancel">ABBRECHEN</string>
-	<string name="common_login_entered_password_wrong" formatted="true">Sie haben falsche Kennwort %1$s-mal eingegeben, verbleibende %2$s -ZEZE.</string>
+	<string name="common_yes">JA</string>
+	<string name="common_cancel">STORNIEREN</string>
+	<string name="common_login_entered_password_wrong" formatted="true">Sie haben ein falsches Passwort %1$s Zeiten eingegeben und %2$s Zeiten verbleiben.</string>
 	<string name="common_status_code" formatted="false">Status Code: %s</string>
 	<string name="common_error_code" formatted="false">Error Code: %s</string>
 </resources>

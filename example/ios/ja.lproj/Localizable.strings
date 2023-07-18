@@ -1,9 +1,9 @@
 
 "app_name" = "localizgen";
-"common_ok" = "わかった";
+"common_ok" = "OK";
 "common_no" = "いいえ";
 "common_yes" = "はい";
 "common_cancel" = "キャンセル";
-"common_login_entered_password_wrong" = "誤ったパスワード%@回、残りの%@回。";
+"common_login_entered_password_wrong" = "間違ったパスワードを入力し、%@を残り、%@を残しました。";
 "common_status_code" = "Status Code: %@";
 "common_error_code" = "Error Code: %@";

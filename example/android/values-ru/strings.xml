@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">localizegen</string>
-	<string name="common_ok">Ok</string>
+	<string name="common_ok">ХОРОШО</string>
 	<string name="common_no">НЕТ</string>
 	<string name="common_yes">ДА</string>
-	<string name="common_cancel">ОТМЕНИТЬ</string>
-	<string name="common_login_entered_password_wrong" formatted="true">Вы ввели неправильный пароль %1$s раз, оставаясь %2$s раз.</string>
+	<string name="common_cancel">ОТМЕНА</string>
+	<string name="common_login_entered_password_wrong" formatted="true">Вы ввели неправильный пароль %1$s раз, оставшиеся %2$s раз.</string>
 	<string name="common_status_code" formatted="false">Status Code: %s</string>
 	<string name="common_error_code" formatted="false">Error Code: %s</string>
 </resources>

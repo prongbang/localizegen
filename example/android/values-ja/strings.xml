@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">localizgen</string>
-	<string name="common_ok">わかった</string>
+	<string name="common_ok">OK</string>
 	<string name="common_no">いいえ</string>
 	<string name="common_yes">はい</string>
 	<string name="common_cancel">キャンセル</string>
-	<string name="common_login_entered_password_wrong" formatted="true">誤ったパスワード%1$s回、残りの%2$s回。</string>
+	<string name="common_login_entered_password_wrong" formatted="true">間違ったパスワードを入力し、%2$sを残り、%2$sを残しました。</string>
 	<string name="common_status_code" formatted="false">Status Code: %s</string>
 	<string name="common_error_code" formatted="false">Error Code: %s</string>
 </resources>

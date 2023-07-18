@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">localizgen</string>
-	<string name="common_ok">d\'accord</string>
+	<string name="common_ok">D\'ACCORD</string>
 	<string name="common_no">NON</string>
 	<string name="common_yes">OUI</string>
 	<string name="common_cancel">ANNULER</string>

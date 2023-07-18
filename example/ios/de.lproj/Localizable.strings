@@ -2,8 +2,8 @@
 "app_name" = "localizgen";
 "common_ok" = "OK";
 "common_no" = "NEIN";
-"common_yes" = "JAWOHL";
-"common_cancel" = "ABBRECHEN";
-"common_login_entered_password_wrong" = "Sie haben falsche Kennwort %@-mal eingegeben, verbleibende %@ -ZEZE.";
+"common_yes" = "JA";
+"common_cancel" = "STORNIEREN";
+"common_login_entered_password_wrong" = "Sie haben ein falsches Passwort %@ Zeiten eingegeben und %@ Zeiten verbleiben.";
 "common_status_code" = "Status Code: %@";
 "common_error_code" = "Error Code: %@";
