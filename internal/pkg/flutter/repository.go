@@ -2,19 +2,20 @@ package flutter
 
 import (
 	"fmt"
+	"regexp"
+	"sort"
+	"strings"
+
 	"github.com/prongbang/filex"
 	"github.com/prongbang/localizegen/pkg/common"
 	"github.com/prongbang/localizegen/pkg/core"
 	"github.com/prongbang/localizegen/pkg/csvx"
-	"regexp"
-	"sort"
-	"strings"
 )
 
 type Repository interface {
-	GenerateKeys(csv csvx.CsvList) string
+	GenerateKeys(csv csvx.CsvList, languages core.Languages) string
 	GenerateSources(csv csvx.CsvList, languages core.Languages) string
-	GenerateKeysFile(csv csvx.CsvList, target string, filename string) core.Result
+	GenerateKeysFile(csv csvx.CsvList, languages core.Languages, target string, filename string) core.Result
 	GenerateSourcesFile(csv csvx.CsvList, languages core.Languages, target string, filename string) core.Result
 }
 
@@ -22,14 +23,15 @@ type repository struct {
 	FileX filex.FileX
 }
 
-func (r *repository) GenerateKeys(csv csvx.CsvList) string {
+func (r *repository) GenerateKeys(csv csvx.CsvList, languages core.Languages) string {
 	content := "import 'package:localization/localization.dart';\n\n"
 	content += "class KeysLocalizations extends TranslateLocalizations {"
-	keys := csv[0]
+	localeLen := len(languages)
 	for i := 1; i < len(csv); i++ {
 		row := csv[i]
 
-		if common.ColNotEmpty(row) < len(keys) {
+		rowLen := common.ColNotEmpty(row)
+		if rowLen >= 0 && rowLen <= localeLen {
 			continue
 		}
 
@@ -87,6 +89,7 @@ func (r *repository) GenerateSources(csv csvx.CsvList, languages core.Languages)
 	// Generate supported locale
 	supported := "\tMap<String, Map<String, String>> get _supported => {\n"
 	sources := map[string]string{}
+	localeLen := len(languages)
 	for _, key := range localeKeys {
 		locale := languages[key]
 		sources[locale.Key] += "\tMap<String, String> get _" + locale.Key + " => {\n"
@@ -94,11 +97,11 @@ func (r *repository) GenerateSources(csv csvx.CsvList, languages core.Languages)
 	}
 	supported += "\t\t\t};\n\n"
 
-	keys := csv[0]
 	for i := 1; i < len(csv); i++ {
 		row := csv[i]
 
-		if common.ColNotEmpty(row) < len(keys) {
+		rowLen := common.ColNotEmpty(row)
+		if rowLen >= 0 && rowLen <= localeLen {
 			continue
 		}
 
@@ -146,8 +149,8 @@ func (r *repository) GenerateSources(csv csvx.CsvList, languages core.Languages)
 	return content
 }
 
-func (r *repository) GenerateKeysFile(csv csvx.CsvList, target string, filename string) core.Result {
-	stringS := r.GenerateKeys(csv)
+func (r *repository) GenerateKeysFile(csv csvx.CsvList, languages core.Languages, target string, filename string) core.Result {
+	stringS := r.GenerateKeys(csv, languages)
 	fName, err := r.FileX.CreateFile(target, filename, stringS)
 	result := core.Result{Filename: fName, Status: "Success"}
 	if err != nil {

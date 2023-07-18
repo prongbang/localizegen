@@ -22,7 +22,7 @@ func (u *useCase) Generate(configuration core.Configuration) {
 			configuration.OnAdd()
 			go func() {
 				defer configuration.OnDone()
-				configuration.Result <- u.Repo.GenerateXmlResourceFile(configuration.Csv, configuration.Locale, configuration.Target, localeIndex, configuration.Filename)
+				configuration.Result <- u.Repo.GenerateXmlResourceFile(configuration.Csv, configuration.Languages, configuration.Locale, configuration.Target, localeIndex, configuration.Filename)
 			}()
 		} else {
 			configuration.Result <- core.Result{Message: "Language key " + configuration.Locale + " not found.", Status: "Error"}
@@ -32,7 +32,7 @@ func (u *useCase) Generate(configuration core.Configuration) {
 			configuration.OnAdd()
 			go func(localeIndex int, locale string) {
 				defer configuration.OnDone()
-				configuration.Result <- u.Repo.GenerateXmlResourceFile(configuration.Csv, locale, configuration.Target, localeIndex, configuration.Filename)
+				configuration.Result <- u.Repo.GenerateXmlResourceFile(configuration.Csv, configuration.Languages, locale, configuration.Target, localeIndex, configuration.Filename)
 			}(v.Index, k)
 		}
 	}

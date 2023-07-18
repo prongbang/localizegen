@@ -1,32 +1,34 @@
 package ios
 
 import (
+	"regexp"
+	"strings"
+
 	"github.com/prongbang/filex"
 	"github.com/prongbang/localizegen/pkg/common"
 	"github.com/prongbang/localizegen/pkg/core"
 	"github.com/prongbang/localizegen/pkg/csvx"
-	"regexp"
-	"strings"
 )
 
 type Repository interface {
-	GenerateStringsResources(csv csvx.CsvList, localeIndex int) string
-	GenerateSwiftResources(csv csvx.CsvList, localeIndex int) string
-	GenerateStringsResourceFile(csv csvx.CsvList, locale string, target string, localeIndex int, filename string) core.Result
-	GenerateSwiftResourceFile(csv csvx.CsvList, target string, localeIndex int, filename string) core.Result
+	GenerateStringsResources(csv csvx.CsvList, languages core.Languages, localeIndex int) string
+	GenerateSwiftResources(csv csvx.CsvList, languages core.Languages, localeIndex int) string
+	GenerateStringsResourceFile(csv csvx.CsvList, languages core.Languages, locale string, target string, localeIndex int, filename string) core.Result
+	GenerateSwiftResourceFile(csv csvx.CsvList, languages core.Languages, target string, localeIndex int, filename string) core.Result
 }
 
 type repository struct {
 	FileX filex.FileX
 }
 
-func (r *repository) GenerateStringsResources(csv csvx.CsvList, localeIndex int) string {
+func (r *repository) GenerateStringsResources(csv csvx.CsvList, languages core.Languages, localeIndex int) string {
 	content := ""
-	keys := csv[0]
+	localeLen := len(languages)
 	for i := 1; i < len(csv); i++ {
 		row := csv[i]
 
-		if common.ColNotEmpty(row) < len(keys) {
+		rowLen := common.ColNotEmpty(row)
+		if rowLen >= 0 && rowLen <= localeLen {
 			continue
 		}
 
@@ -54,13 +56,14 @@ func (r *repository) GenerateStringsResources(csv csvx.CsvList, localeIndex int)
 	return content
 }
 
-func (r *repository) GenerateSwiftResources(csv csvx.CsvList, localeIndex int) string {
+func (r *repository) GenerateSwiftResources(csv csvx.CsvList, languages core.Languages, localeIndex int) string {
 	content := "import Foundation\n\npublic enum LocalizablesType: String {"
-	keys := csv[0]
+	localeLen := len(languages)
 	for i := 1; i < len(csv); i++ {
 		row := csv[i]
 
-		if common.ColNotEmpty(row) < len(keys) {
+		rowLen := common.ColNotEmpty(row)
+		if rowLen >= 0 && rowLen <= localeLen {
 			continue
 		}
 
@@ -78,9 +81,9 @@ func (r *repository) GenerateSwiftResources(csv csvx.CsvList, localeIndex int) s
 	return content
 }
 
-func (r *repository) GenerateStringsResourceFile(csv csvx.CsvList, locale string, target string, localeIndex int, filename string) core.Result {
+func (r *repository) GenerateStringsResourceFile(csv csvx.CsvList, languages core.Languages, locale string, target string, localeIndex int, filename string) core.Result {
 	targets := target + "/" + locale + ".lproj"
-	stringS := r.GenerateStringsResources(csv, localeIndex)
+	stringS := r.GenerateStringsResources(csv, languages, localeIndex)
 	fName, err := r.FileX.CreateFile(targets, filename, stringS)
 	result := core.Result{Filename: fName, Status: "Success"}
 	if err != nil {
@@ -90,8 +93,8 @@ func (r *repository) GenerateStringsResourceFile(csv csvx.CsvList, locale string
 	return result
 }
 
-func (r *repository) GenerateSwiftResourceFile(csv csvx.CsvList, target string, localeIndex int, filename string) core.Result {
-	stringS := r.GenerateSwiftResources(csv, localeIndex)
+func (r *repository) GenerateSwiftResourceFile(csv csvx.CsvList, languages core.Languages, target string, localeIndex int, filename string) core.Result {
+	stringS := r.GenerateSwiftResources(csv, languages, localeIndex)
 	fName, err := r.FileX.CreateFile(target, filename, stringS)
 	result := core.Result{Filename: fName, Status: "Success"}
 	if err != nil {

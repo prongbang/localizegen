@@ -22,7 +22,7 @@ func (u *useCase) Generate(configuration core.Configuration) {
 			go func() {
 				defer configuration.OnDone()
 				configuration.Result <- u.Repo.GenerateSourcesFile(configuration.Csv, configuration.Languages, configuration.Target, filenameSources)
-				configuration.Result <- u.Repo.GenerateKeysFile(configuration.Csv, configuration.Target, filenameKeys)
+				configuration.Result <- u.Repo.GenerateKeysFile(configuration.Csv, configuration.Languages, configuration.Target, filenameKeys)
 			}()
 		} else {
 			configuration.Result <- core.Result{Message: "Language key " + configuration.Locale + " not found.", Status: "Error"}
@@ -31,7 +31,7 @@ func (u *useCase) Generate(configuration core.Configuration) {
 		configuration.OnAdd()
 		go func() {
 			defer configuration.OnDone()
-			configuration.Result <- u.Repo.GenerateKeysFile(configuration.Csv, configuration.Target, filenameKeys)
+			configuration.Result <- u.Repo.GenerateKeysFile(configuration.Csv, configuration.Languages, configuration.Target, filenameKeys)
 			configuration.Result <- u.Repo.GenerateSourcesFile(configuration.Csv, configuration.Languages, configuration.Target, filenameSources)
 		}()
 	}

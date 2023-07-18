@@ -1,16 +1,17 @@
 package localizegen
 
 import (
+	"net/http"
+	"regexp"
+	"strings"
+	"sync"
+
 	"github.com/prongbang/localizegen/internal/pkg/android"
 	"github.com/prongbang/localizegen/internal/pkg/flutter"
 	"github.com/prongbang/localizegen/internal/pkg/ios"
 	"github.com/prongbang/localizegen/pkg/core"
 	"github.com/prongbang/localizegen/pkg/csvx"
 	"github.com/prongbang/localizegen/pkg/platform"
-	"net/http"
-	"regexp"
-	"strings"
-	"sync"
 )
 
 type UseCase interface {
@@ -89,7 +90,7 @@ func (u *usecase) GetAvailableLanguages(csv csvx.CsvList) core.Languages {
 	for i := 1; i < len(csv[0]); i++ {
 		name, err := regexp.Compile("\\w+ \\(")
 		key, err := regexp.Compile("\\((\\w\\w*)\\)")
-		if err == nil {
+		if err == nil && name.Match([]byte(csv[0][i])) && name.Match([]byte(csv[0][i])) {
 			matchName := name.FindString(csv[0][i])
 			matchKey := key.FindString(csv[0][i])
 

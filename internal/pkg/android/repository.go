@@ -1,31 +1,32 @@
 package android
 
 import (
+	"regexp"
+	"strings"
+
 	"github.com/prongbang/filex"
 	"github.com/prongbang/localizegen/pkg/common"
 	"github.com/prongbang/localizegen/pkg/core"
 	"github.com/prongbang/localizegen/pkg/csvx"
-	"regexp"
-	"strings"
 )
 
 type Repository interface {
-	GenerateXmlResources(csv csvx.CsvList, localeIndex int) string
-	GenerateXmlResourceFile(csv csvx.CsvList, locale string, target string, localeIndex int, filename string) core.Result
+	GenerateXmlResources(csv csvx.CsvList, languages core.Languages, localeIndex int) string
+	GenerateXmlResourceFile(csv csvx.CsvList, languages core.Languages, locale string, target string, localeIndex int, filename string) core.Result
 }
 
 type repository struct {
 	FileX filex.FileX
 }
 
-func (r *repository) GenerateXmlResourceFile(csv csvx.CsvList, locale string, target string, localeIndex int, filename string) core.Result {
+func (r *repository) GenerateXmlResourceFile(csv csvx.CsvList, languages core.Languages, locale string, target string, localeIndex int, filename string) core.Result {
 	targets := target + "/values"
 	if locale != core.LocaleEn && strings.Index(target, "/values") == -1 {
 		targets = target + "/values-" + locale
 	}
 	targets = strings.ReplaceAll(targets, "/values/values", "/values")
 
-	xmlX := r.GenerateXmlResources(csv, localeIndex)
+	xmlX := r.GenerateXmlResources(csv, languages, localeIndex)
 	fName, err := r.FileX.CreateFile(targets, filename, xmlX)
 	result := core.Result{Filename: fName, Status: "Success"}
 	if err != nil {
@@ -35,15 +36,18 @@ func (r *repository) GenerateXmlResourceFile(csv csvx.CsvList, locale string, ta
 	return result
 }
 
-func (r *repository) GenerateXmlResources(csv csvx.CsvList, localeIndex int) string {
+func (r *repository) GenerateXmlResources(csv csvx.CsvList, languages core.Languages, localeIndex int) string {
 	content := "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 	content += "<resources>"
-	keys := csv[0]
+	localeLen := len(languages)
 	for i := 1; i < len(csv); i++ {
 		row := csv[i]
-		if common.ColNotEmpty(row) < len(keys) {
+
+		rowLen := common.ColNotEmpty(row)
+		if rowLen >= 0 && rowLen <= localeLen {
 			continue
 		}
+
 		formatted := ""
 		if strings.Index(row[1], "%s") > -1 || strings.Index(row[1], "%d") > -1 || strings.Index(row[1], "%@") > -1 {
 			formatted = " formatted=\"false\""

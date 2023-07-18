@@ -24,8 +24,8 @@ func (u *useCase) Generate(configuration core.Configuration) {
 			configuration.OnAdd()
 			go func() {
 				defer configuration.OnDone()
-				configuration.Result <- u.Repo.GenerateSwiftResourceFile(configuration.Csv, configuration.Target, localeIndex, filenameSwift)
-				configuration.Result <- u.Repo.GenerateStringsResourceFile(configuration.Csv, configuration.Locale, configuration.Target, localeIndex, filenameString)
+				configuration.Result <- u.Repo.GenerateSwiftResourceFile(configuration.Csv, configuration.Languages, configuration.Target, localeIndex, filenameSwift)
+				configuration.Result <- u.Repo.GenerateStringsResourceFile(configuration.Csv, configuration.Languages, configuration.Locale, configuration.Target, localeIndex, filenameString)
 			}()
 		} else {
 			configuration.Result <- core.Result{Message: "Language key " + configuration.Locale + " not found.", Status: "Error"}
@@ -38,9 +38,9 @@ func (u *useCase) Generate(configuration core.Configuration) {
 				defer configuration.OnDone()
 				if first {
 					first = false
-					configuration.Result <- u.Repo.GenerateSwiftResourceFile(configuration.Csv, configuration.Target, localeIndex, filenameSwift)
+					configuration.Result <- u.Repo.GenerateSwiftResourceFile(configuration.Csv, configuration.Languages, configuration.Target, localeIndex, filenameSwift)
 				}
-				configuration.Result <- u.Repo.GenerateStringsResourceFile(configuration.Csv, locale, configuration.Target, localeIndex, filenameString)
+				configuration.Result <- u.Repo.GenerateStringsResourceFile(configuration.Csv, configuration.Languages, locale, configuration.Target, localeIndex, filenameString)
 			}(v.Index, k)
 		}
 	}
