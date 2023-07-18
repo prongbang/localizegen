@@ -14,7 +14,7 @@ class SourcesLocalizations {
 			'ru': _ru,
 			'th': _th,
 			'zh': _zh,
-			};
+		};
 
 	Map<String, String> get _de => {
 		'app_name': 'localizgen',
