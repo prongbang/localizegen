@@ -17,6 +17,8 @@
 
 Generate Localization tools for Mobile Application an Android, iOS
 
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/prongbang)
+
 ## Setup
 
 - 1. Create a Google Sheet
